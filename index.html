@@ -93,9 +93,10 @@
 </head>
 <body>
 
-    <!-- Audio Musik menggunakan link langsung yang stabil -->
-    <audio id="bgMusic" loop>
-        <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+    <!-- Audio Musik menggunakan link stabil publik -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Beethoven_Moonlight_1st_movement.ogg" type="audio/ogg">
+        <source src="https://actions.google.com/sounds/v1/ambiences/romantic_music.ogg" type="audio/ogg">
         Browser Anda tidak mendukung elemen audio.
     </audio>
 
@@ -109,7 +110,6 @@
     </div>
 
     <script>
-        // Lirik lagu 2001x dengan pengaturan waktu (dalam milidetik)
         const lyrics = [
             { text: "🎵 Mengapa sepi tanpa kau di sini?", time: 0 },
             { text: "🔥 Tapi tiap bertemu naik darahku lagi...", time: 5000 },
@@ -133,8 +133,9 @@
                     btn.innerText = "Jeda Musik ⏸️";
                     startLyricsTimer();
                     startHeartAnimation();
-                }).catch(error => {
-                    alert("Gagal memutar audio. Coba klik sekali lagi.");
+                }).catch(e => {
+                    console.log("Audio play error:", e);
+                    alert("Sentuh tombol sekali lagi untuk memutar musik ya!");
                 });
             } else {
                 music.pause();
